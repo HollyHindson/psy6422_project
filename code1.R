@@ -25,12 +25,23 @@ head(data)
 
 # stats
 
+# grouping variables by intensity and condition
+
 data_summary <- data %>%
   group_by(Intensity, Condition) %>%
   summarise(
     sleep_latency_mean = mean(sleeplatency, na.rm = TRUE),
     sleep_latency_se = sd(sleeplatency, na.rm = TRUE) / sqrt(n()),
     .groups = 'drop')
+ 
+# creating means of HM and LM so they can be joined by lines 
+
+line_data <- data_summary %>%
+  filter(Condition %in% c("HM", "LM")) %>%
+  group_by(Intensity) %>%
+  summarise(HM_mean = mean(sleep_latency_mean[Condition == "HM"]),
+            LM_mean = mean(sleep_latency_mean[Condition == "LM"]))
+
  # Create Plot
    
    p <- ggplot(data, aes(x = as.factor(Intensity), y = sleeplatency, color = Condition))+
@@ -47,11 +58,6 @@ data_summary <- data %>%
    
    # add lines between means for each condition and intensity
      
-     line_data <- data_summary %>%
-     filter(Condition %in% c("HM", "LM")) %>%
-     group_by(Intensity) %>%
-     summarise(HM_mean = mean(sleep_latency_mean[Condition == "HM"]),
-               LM_mean = mean(sleep_latency_mean[Condition == "LM"]))
    
      geom_segment(data = line_data, aes(x = as.numeric(as.factor(Intensity)) - 0.15, xend = as.numeric(as.factor(Intensity)) + 0.15, y = HM_mean, yend = LM_mean), color = "black") +
      

@@ -120,6 +120,29 @@ knitr::include_graphics("data/LM.png")
 
 **Sleep Latency[min]**: The time in minutes taken from lights off for participants to fall asleep and enter the N2 sleep stage.
 
+## Statistics
+```{r stats, warning = FALSE, message = FALSE, eval = FALSE}
+
+# stats
+
+# grouping variables by intensity and condition
+
+data_summary <- data %>%
+  group_by(Intensity, Condition) %>%
+  summarise(
+    sleep_latency_mean = mean(sleeplatency, na.rm = TRUE),
+    sleep_latency_se = sd(sleeplatency, na.rm = TRUE) / sqrt(n()),
+    .groups = 'drop')
+ 
+# creating means of HM and LM so they can be joined by lines 
+
+line_data <- data_summary %>%
+  filter(Condition %in% c("HM", "LM")) %>%
+  group_by(Intensity) %>%
+  summarise(HM_mean = mean(sleep_latency_mean[Condition == "HM"]),
+            LM_mean = mean(sleep_latency_mean[Condition == "LM"]))
+```
+
 ## Data Visualisation
 
 A scatter graph is the best way to visualise the data
