@@ -3,6 +3,7 @@
 install.packages("tidyverse")
 install.packages("readr")
 install.packages("ggplot2")
+install.packages("here")
 
 
 # load libraries
@@ -10,14 +11,12 @@ install.packages("ggplot2")
 library(tidyverse)
 library(readr)
 library(ggplot2)
-
+library(here)
 
 
 # load data into R
 
-setwd('C:/Users/hinds/OneDrive/Documents/Systems Neuroscience Masters/dav/finalproject_dav')
-file_path <- "data/sleeplatency_rawdata.csv"
-data <- read_csv(file_path)
+data <- read_csv(here("data","sleeplatency_rawdata.csv"))
 
 
 # Ensure data is present
