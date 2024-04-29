@@ -69,6 +69,10 @@ head(data)
 
 you should see the top few lines of data with headings:  'Participant', 'Intensity', 'Condition', 'sleeplatency'
 
+# do the statistics 
+- separate variables by intensity and condition
+- find the mean of HM and LM at each intensity
+
 # create the plot using the code script found within the Rmarkdown page
 
 # generate and save the plot using the script in the Rmarkdown page
