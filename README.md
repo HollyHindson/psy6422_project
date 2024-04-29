@@ -15,13 +15,7 @@ Reference: **Schöllhorn, I., Stefani, O., Lucas, R.J. et al. Melanopic irradian
 * code for markdown "sleeplatency_markdown.png"
 * html webpage "sleeplatency_markdown.html"
 * pdf page "sleeplatency_markdown.pdf"
--RMarkdown images
- * "HM.png"
- * "LM.png"
- * "moon_image.png"
- * "smartphone_image.png"
- * "tablet_image.png"
- * "pc_image.png"
+
 
 ## Instructions
 
