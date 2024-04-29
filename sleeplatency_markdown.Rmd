@@ -200,6 +200,15 @@ A scatter graph is the best way to visualise the data
             axis.title.y = element_text(margin = margin(r = 20)),
            plot.title = element_text(size = 14,hjust = 0.35, margin = margin(b = 20)))
 ```
+
+Print the plot
+```{r print plot, eval = FALSE}
+   # Print
+   
+   p
+```
+
+
 Finally, we save the plot image:
 ```{r saveplot, eval = FALSE}
   # Save Plot
